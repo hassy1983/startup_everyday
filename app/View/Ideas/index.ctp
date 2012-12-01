@@ -2,14 +2,12 @@
 	<h2><?php echo __('Ideas'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($ideas as $idea): ?>
 	<tr>
-		<td><?php echo h($idea['Idea']['id']); ?>&nbsp;</td>
 		<td><?php echo $this->Html->link(h($idea['Idea']['name']), array('action' => 'view', $idea['Idea']['id']));?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('いいね!'), '#', array('class' => 'like', 'onClick' => 'window.alert("未実装です")')); ?>
