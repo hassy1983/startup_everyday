@@ -437,7 +437,8 @@ p.error,
 .message,
 .cake-error,
 p.error,
-.error-message {
+.error-message,
+.actions a.tellme {
 	clear: both;
 	color: #fff;
 	background: #c43c35;
@@ -552,6 +553,17 @@ input[type=submit]:active,
 	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
 	border-color: #aaa;
 	text-decoration: none;
+}
+
+.actions a.like {
+    background: #4E73C4;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4769B2), to(#4E73C4));
+    background-image: -webkit-linear-gradient(top, #4769B2, #4E73C4);
+    background-image: -moz-linear-gradient(top, #4769B2, #4E73C4);
+    background-image: -ms-linear-gradient(top, #4769B2, #4E73C4);
+    background-image: -o-linear-gradient(top, #4769B2, #4E73C4);
+    background-image: linear-gradient(top, #4769B2, #4E73C4);
+    color:#fff
 }
 
 /** Related **/
