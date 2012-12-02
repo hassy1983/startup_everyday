@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+section {
+    margin-top: 100px;
+}
+li {
+    list-style-type:none;
+}

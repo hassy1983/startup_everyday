@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Idea'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class' => 'span12'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
