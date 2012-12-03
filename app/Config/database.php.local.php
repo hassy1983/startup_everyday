@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'password' => 'everyday',
 		'database' => 'startup',
 		'prefix' => '',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8',
 	);
 
 	public $test = array(

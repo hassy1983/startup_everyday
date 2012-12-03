@@ -42,10 +42,10 @@ class IdeasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Idea->create();
 			if ($this->Idea->save($this->request->data)) {
-				$this->Session->setFlash(__('The idea has been saved'));
+				$this->Session->setFlash(__('The idea has been saved'), 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
 	}
@@ -64,10 +64,10 @@ class IdeasController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Idea->save($this->request->data)) {
-				$this->Session->setFlash(__('The idea has been saved'));
+				$this->Session->setFlash(__('The idea has been saved'), 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
 			$this->request->data = $this->Idea->read(null, $id);
@@ -91,10 +91,10 @@ class IdeasController extends AppController {
 			throw new NotFoundException(__('Invalid idea'));
 		}
 		if ($this->Idea->delete()) {
-			$this->Session->setFlash(__('Idea deleted'));
+		    $this->Session->setFlash(__('Idea deleted'), 'default', array('class' => 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Idea was not deleted'));
+		$this->Session->setFlash(__('Idea was not deleted'), 'default', array('class' => 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
 }
