@@ -16,20 +16,18 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php echo 'Startup Everyday - 実現したいWebサービスやアプリのアイデアを投稿できるサービス' ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('startup_everyday.css');
 		
@@ -48,19 +46,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	</div>
 	<div class="container">
 		<section id="header">
-			
 		</section>
 		<section id="content">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</section>
 		<section id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
 		</section>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
