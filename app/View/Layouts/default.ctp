@@ -30,7 +30,9 @@
 
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('startup_everyday.css');
-		
+
+		echo $this->Html->script('jquery-1.8.3.min.js');
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

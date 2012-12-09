@@ -5,3 +5,9 @@ section {
 li {
     list-style-type:none;
 }
+.ideas .btn .label {
+    width:28px;
+    margin-left:5px;
+    padding-top:2px;
+    top:0px;
+}

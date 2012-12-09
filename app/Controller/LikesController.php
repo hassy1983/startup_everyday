@@ -1,51 +1,31 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Ideas Controller
+ * Likes Controller
  *
- * @property Idea $Idea
+ * @property Like $Like
  */
-class IdeasController extends AppController {
+class LikesController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-	    $this->paginate = array('order' => 'id DESC');
-		$this->Idea->recursive = 0;
-		$this->set('ideas', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Idea->id = $id;
-		if (!$this->Idea->exists()) {
-			throw new NotFoundException(__('Invalid idea'));
-		}
-		$this->set('idea', $this->Idea->read(null, $id));
-	}
-
+    var $layout = 'ajax';
+    
 /**
  * add method
  *
  * @return void
  */
-	public function add() {
-		if ($this->request->is('ajax')) {
-			$this->Idea->create();
-			if ($this->Idea->save($this->request->data)) {
-				$this->Session->setFlash(__('The idea has been saved'), 'default', array('class' => 'alert alert-success'));
-				$this->redirect(array('action' => 'index'));
+	public function add($ideaId) {
+	    $ideaId = intval($ideaId);
+	    //if ($ideaId) return false;
+		$this->log('add');
+	    if ($this->request->is('ajax')) {
+			$this->Like->create();
+		    $this->request->data = array('idea_id' => $ideaId);
+		    $this->log($this->request->data);
+			if ($this->Like->save($this->request->data)) {
+			    $this->log('like is saved ideaid:' . $ideaId);
 			} else {
-				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			    $this->log('like is NOT saved ideaid:' . $ideaId);
 			}
 		}
 	}
@@ -62,15 +42,15 @@ class IdeasController extends AppController {
 		if (!$this->request->is('ajax')) {
 			throw new MethodNotAllowedException();
 		}
-		$this->Idea->id = $id;
-		if (!$this->Idea->exists()) {
-			throw new NotFoundException(__('Invalid idea'));
+		$this->Like->id = $id;
+		if (!$this->Like->exists()) {
+			throw new NotFoundException(__('Invalid Like'));
 		}
-		if ($this->Idea->delete()) {
-		    $this->Session->setFlash(__('Idea deleted'), 'default', array('class' => 'alert alert-success'));
+		if ($this->Like->delete()) {
+		    $this->Session->setFlash(__('Like deleted'), 'default', array('class' => 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Idea was not deleted'), 'default', array('class' => 'alert alert-error'));
+		$this->Session->setFlash(__('Like was not deleted'), 'default', array('class' => 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

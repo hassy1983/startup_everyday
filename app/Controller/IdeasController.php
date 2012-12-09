@@ -14,7 +14,7 @@ class IdeasController extends AppController {
  */
 	public function index() {
 	    $this->paginate = array('order' => 'id DESC');
-		$this->Idea->recursive = 0;
+		$this->Idea->recursive = 1;
 		$this->set('ideas', $this->paginate());
 	}
 
