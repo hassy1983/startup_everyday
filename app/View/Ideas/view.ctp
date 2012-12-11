@@ -11,6 +11,13 @@
 			<?php echo h($idea['Idea']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Name'); ?></dt>
+		<?php /*?>
+		<dd>
+			<?php echo h($idea['Idea']['like_count']); ?>
+			&nbsp;
+		</dd>
+		<?php */?>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($idea['Idea']['created']); ?>

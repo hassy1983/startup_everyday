@@ -14,6 +14,14 @@ class Idea extends AppModel {
 	public $displayField = 'name';
 
 /**
+ * Virtual fields
+ *
+ * @var array
+ */
+	var $virtualFields = array(
+	    'like_count' => 'count(Like.id)'
+	);
+/**
  * Validation rules
  *
  * @var array

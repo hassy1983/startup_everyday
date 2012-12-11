@@ -14,8 +14,28 @@ class IdeasController extends AppController {
  */
 	public function index() {
 	    $this->paginate = array('order' => 'id DESC');
-		$this->Idea->recursive = 1;
-		$this->set('ideas', $this->paginate());
+		$this->Idea->recursive = 0;
+		$this->paginate = array(
+			'joins' => array(
+                array(
+                	'type' => 'left',
+                	'alias' => 'Like',
+                	'table' => 'likes',
+                    'conditions' => 'Idea.id = Like.idea_id'
+                )
+            ),
+            'group' => array(
+                'Idea.id'
+            ),
+            'fields' => array(
+                'Idea.id',
+                'Idea.name',
+                'like_count' // vitualFields!
+            )
+            
+		);
+		$ideas = $this->paginate();
+    	$this->set(compact('ideas'));
 	}
 
 /**
@@ -27,6 +47,7 @@ class IdeasController extends AppController {
  */
 	public function view($id = null) {
 		$this->Idea->id = $id;
+		$this->Idea->virtualFields = array();
 		if (!$this->Idea->exists()) {
 			throw new NotFoundException(__('Invalid idea'));
 		}

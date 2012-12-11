@@ -43,6 +43,7 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<?php echo $this->Html->link('Startup Everyday', array('controller' => 'ideas', 'action' => 'index'), array('class' => 'brand')); ?>
+				<?php echo $this->Html->link(__('アイデアを追加する'), array('controller' => 'ideas', 'action' => 'add'), array('class' => 'btn btn-success pull-right')); ?>
 			</div>
 		</div>
 	</div>
