@@ -13,7 +13,6 @@ class IdeasController extends AppController {
  * @return void
  */
 	public function index() {
-	    $this->paginate = array('order' => 'id DESC');
 		$this->Idea->recursive = 0;
 		$this->paginate = array(
 			'joins' => array(
@@ -31,8 +30,8 @@ class IdeasController extends AppController {
                 'Idea.id',
                 'Idea.name',
                 'like_count' // vitualFields!
-            )
-            
+            ),
+            'order' => 'id DESC'
 		);
 		$ideas = $this->paginate();
     	$this->set(compact('ideas'));
