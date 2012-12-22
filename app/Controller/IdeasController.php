@@ -79,6 +79,7 @@ class IdeasController extends AppController {
  */
 	public function edit($id = null) {
 		$this->Idea->id = $id;
+		$this->virtualFields = null;
 		if (!$this->Idea->exists()) {
 			throw new NotFoundException(__('Invalid idea'));
 		}
@@ -90,7 +91,11 @@ class IdeasController extends AppController {
 				$this->Session->setFlash(__('The idea could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
-			$this->request->data = $this->Idea->read(null, $id);
+			$this->request->data = $this->Idea->find('first', array(
+			    'recursive' => -1,
+			    'condtions' => array('id' => $id),
+				'fields' => array('id', 'name')
+			));
 		}
 	}
 

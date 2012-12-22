@@ -1,8 +1,23 @@
 <div class="ideas index">
 	<div class="row">
-		ソート
-		<?php echo $this->Paginator->sort('id', '投稿順'); ?>
-		<?php echo $this->Paginator->sort('like_count', 'いいね!順'); ?>
+		<ul class="breadcrumb nav nav-pills">
+			<?php 
+			$idClass = $icon = 'icon-arrow-down';
+			$likeClass = 'icon-none';
+			if (isset($this->params['named']['direction']) && $this->params['named']['sort']) {
+        		if ($this->params['named']['direction'] == 'asc') $icon = 'icon-arrow-up';
+        		if ($this->params['named']['sort'] == 'like_count') {
+        			$idClass = 'icon-none';
+        			$likeClass = $icon;
+        		} else {
+        			$idClass = $icon;
+        			$likeClass = 'icon-none';
+        		}
+			}
+			?>
+    		<li><?php echo $this->Paginator->sort('id', $this->Html->Tag('span', '', array('class' => $idClass)) . '投稿順', array('direction' => 'asc', 'class' => 'sort', 'escape' => false)); ?></li>
+    		<li><?php echo $this->Paginator->sort('like_count', $this->Html->Tag('span', '', array('class' => $likeClass)) . 'いいね!順', array('direction' => 'desc', 'class' => 'sort', 'escape' => false)); ?></li>
+		</ul>
     	<ul class="span12">
     	<?php foreach ($ideas as $idea): ?>
     		<li class="well">

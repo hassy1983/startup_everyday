@@ -11,3 +11,9 @@ li {
     padding-top:2px;
     top:0px;
 }
+a.sort span {
+    margin-top:4px;
+}
+.icon-none {
+  background-position: 0px 16px;
+}
