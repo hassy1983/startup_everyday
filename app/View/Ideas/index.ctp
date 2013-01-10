@@ -15,7 +15,7 @@
         		}
 			}
 			?>
-    		<li><?php echo $this->Paginator->sort('id', $this->Html->Tag('span', '', array('class' => $idClass)) . '投稿順', array('direction' => 'asc', 'class' => 'sort', 'escape' => false)); ?></li>
+    		<li><?php echo $this->Paginator->sort('id', $this->Html->Tag('span', '', array('class' => $idClass)) . '投稿順', array('direction' => 'desc', 'class' => 'sort', 'escape' => false)); ?></li>
     		<li><?php echo $this->Paginator->sort('like_count', $this->Html->Tag('span', '', array('class' => $likeClass)) . 'いいね!順', array('direction' => 'desc', 'class' => 'sort', 'escape' => false)); ?></li>
 		</ul>
     	<ul class="span12">

@@ -93,7 +93,7 @@ class IdeasController extends AppController {
 		} else {
 			$this->request->data = $this->Idea->find('first', array(
 			    'recursive' => -1,
-			    'condtions' => array('id' => $id),
+			    'conditions' => array('id' => $id),
 				'fields' => array('id', 'name')
 			));
 		}
